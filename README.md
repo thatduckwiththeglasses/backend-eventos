@@ -1,4 +1,4 @@
-# --- Sistema de reserva de turnos: ---
+# --- Sistema de reserva de eventos: ---
 
 # Descripcion:
 Simple sistema de reserva de diversos eventos
