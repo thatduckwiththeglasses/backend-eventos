@@ -8,9 +8,9 @@ import { Server } from 'socket.io';
 
 import { logger } from "./middlewares/logger.middleware.js";
 import viewsRouter from './routes/views.router.js';
-import routerServices from "./routes/services.routes.js";
+import routerEvents from "./routes/services.routes.js";
 import routerBookings from "./routes/bookings.routes.js";
-import { servicesService } from "./dependencies/index.js";
+import { eventsService } from "./dependencies/index.js";
 
 
  const app = express();
@@ -26,7 +26,7 @@ app.set('views', './src/views');
  
  //routers
  app.use('/', viewsRouter);
- app.use("/api/services",routerServices);
+ app.use("/api/events",routerEvents);
  app.use("/api/bookings",routerBookings);
 
 app.get("/",(req, res) => {
@@ -58,8 +58,8 @@ app.use((req, res) => {
 io.on('connection', (socket) => {
   console.log('Cliente conectado: ' + socket.id);
   socket.on("update service", async ({ id, available }) => {
-    await servicesService.editService(id, available);
-    const services = await servicesService.getServices();
+    await eventsService.editService(id, available);
+    const services = await eventsService.getServices();
 
     io.emit("updated services", { services })
 
