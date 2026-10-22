@@ -1,0 +1,19 @@
+{
+  "name": "backend-eventos",
+  "version": "1.0.0",
+  "description": "Simple sistema de reserva de turnos de diversos servicios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "express-handlebars": "^8.0.3",
+    "mongodb": "^7.7.0",
+    "mongoose": "^9.11.3",
+    "mongoose-paginate-v2": "^1.9.5",
+    "socket": "^1.9.1"
+  }
+}
