@@ -4,30 +4,30 @@ import express from "express";
 import { engine } from 'express-handlebars';
 
 import http from 'http';
-import { Server } from 'socket.io';
+//import { Server } from 'socket.io';
 
-import { logger } from "./middlewares/logger.middleware.js";
-import viewsRouter from './routes/views.router.js';
-import routerEvents from "./routes/services.routes.js";
-import routerBookings from "./routes/bookings.routes.js";
+//import { logger } from "./middlewares/logger.middleware.js";
+//import viewsRouter from './routes/views.router.js';
+import routerEvents from "./routes/events.routes.js";
+//import routerBookings from "./routes/bookings.routes.js";
 import { eventsService } from "./dependencies/index.js";
 
 
  const app = express();
  const server = http.createServer(app);
-const io = new Server(server);
+//const io = new Server(server);
 
  app.use(express.json());
- app.use(logger);
+ //app.use(logger);
 
  app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
-app.set('views', './src/views');
+//app.set('views', './src/views');
  
  //routers
- app.use('/', viewsRouter);
+ //app.use('/', viewsRouter);
  app.use("/api/events",routerEvents);
- app.use("/api/bookings",routerBookings);
+ //app.use("/api/bookings",routerBookings);
 
 app.get("/",(req, res) => {
     res.status(200).json({
@@ -54,7 +54,7 @@ app.use((req, res) => {
         message: `La ruta ${req.method} ${req.url} no existe`
     });
 });
-
+/*
 io.on('connection', (socket) => {
   console.log('Cliente conectado: ' + socket.id);
   socket.on("update service", async ({ id, available }) => {
@@ -67,6 +67,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('Cliente desconectado');
   });
-});
+});*/
 
  export default server;
