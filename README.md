@@ -1,10 +1,10 @@
 # --- Sistema de reserva de turnos: ---
 
 # Descripcion:
-Simple sistema de reserva de turnos de diversos servicios
+Simple sistema de reserva de diversos eventos
 
 Se puede
-    crear un servicio, ver los servicios, actualizar un servicio y eliminar un servicio, crear una reserva, reservar un servicio, actualizar una reserva y eliminar una reserva
+    crear un evento, ver los eventos, actualizar un evento y eliminar un evento, crear un usuario, reservar un evento, actualizar un usuario y eliminar un usuario
 
 
 
@@ -40,15 +40,15 @@ Se puede
     Existe un archivo de ejemplo
 
 # 4 Descripcion de recursos:
-#    1.Services:
-        id: valor irrepetible para identificar los servicios; tipo int
-        title: titulo del servicio; tipo string
-        description: descripcion del servicio; tipo string
-        duration: tiempo que dura el servicio (en horas); tipo int
-        price: precio del servicio; tipo int
-        capacity: Capacidad del servicio; tipp int
-        reserved: reservas acumuladas del servicio; tipo int; no es requerido para crear servicios
-        available: disponibilidad del servicio; tipo boolean
+#    1.Events:
+        id: valor irrepetible para identificar los eventos; tipo int
+        title: titulo del evento; tipo string
+        description: descripcion del evento; tipo string
+        duration: tiempo que dura el evento (en horas); tipo int
+        price: precio del evento; tipo int
+        capacity: Capacidad del evento; tipo int
+        reserved: reservas acumuladas del evento; tipo int; no es requerido para crear servicios
+        available: disponibilidad del evento; tipo boolean
 
 #    2.Bookings:
         id: valor para identificar los clientes; tipo int
