@@ -50,7 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-.env
 /node_modules
-.env
 .env
