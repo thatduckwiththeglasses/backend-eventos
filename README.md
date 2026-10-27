@@ -26,6 +26,8 @@ Se puede
                 'npm isntall socket'
         -   7.mongoose-paginate-v2:
                 'npm isntall mongoose-paginate-v2'
+        -   8.Bcrypt:
+                'npm install bcrypt'
 
 
 # 2.Como ejecutar (en VSC):

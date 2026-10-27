@@ -1,0 +1,1 @@
+import { UserModel } from "../../data/models/user.model.js";
