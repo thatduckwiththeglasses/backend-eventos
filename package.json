@@ -1,10 +1,9 @@
 {
   "name": "backend-eventos",
   "version": "1.0.0",
-  "description": "Simple sistema de reserva de turnos de diversos servicios",
+  "description": "Simple sistema de eventos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch src/server.js"
   },
   "dependencies": {
