@@ -1,14 +1,6 @@
 import { eventsService } from "../dependencies/index.js";
 
-function sendError(res, error, fallbackMessage) {
-    const statusCode = error.statusCode ?? 500;
-
-    if (statusCode === 500) console.log(error)
-        return res.status(statusCode).json({
-            status: "ERROR",
-            message: statusCode === 500 ? fallbackMessage : error.message,
-        })
-}
+import { sendError } from "../utils/responseMessages.js";
 
 export const getAllEvents = async (req, res)  => {
     try{
@@ -32,10 +24,7 @@ export const getEvent = async (req, res) => {
         const event = await eventsService.getEventById(id);
 
         if (event === null){
-            res.status(404).json({
-            status: "---ERROR---",
-            message: "No se encontro el servicio",
-            });
+            sendError(res, 404,"No se encontro el evento");
         } else { 
             res.status(200).json({
                 status: "sucess",
@@ -43,7 +32,7 @@ export const getEvent = async (req, res) => {
             });
         }
     } catch(error){
-        return sendError(res, error, "No se pudo obtener el servicio");
+        return sendError(res, error, "No se pudo obtener el evento");
     }
 };
 
@@ -56,7 +45,7 @@ export const createEvent = async (req , res) => {
             payload: newEvent,
         });
     } catch(error) {
-        return sendError(res, error, "No se pudo crear el servicio");
+        return sendError(res, error, "No se pudo crear el evento");
     }
 };
 
@@ -67,10 +56,7 @@ export const editEvent = async (req, res) => {
         const updateEvent = await eventsService.editEvent(id,req.body);
 
         if(updateEvent === null){
-            return res.status(404).json({
-                status: "--ERROR--",
-                message: "Servicio no encontrado"
-            })
+            return sendError(res, 404,"Evento no encontrado")
         };
 
         res.status(200).json({
@@ -88,10 +74,7 @@ export const removeEvent = async (req, res) => {
         const deletedEvent = await eventsService.deleteEvent(id);
 
         if(deletedEvent === null){
-            return res.status(404).json({
-                status: "--ERROR--",
-                message: "Evento no encontrado"
-            })
+            return sendError(res, 404,"Evento no encontrado")
         };
 
         res.status(200).json({
