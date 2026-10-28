@@ -50,14 +50,5 @@ Se puede
         reserved: reservas acumuladas del evento; tipo int; no es requerido para crear servicios
         available: disponibilidad del evento; tipo boolean
 
-#    2.Bookings:
-        id: valor para identificar los clientes; tipo int
-        clientName: Nombre del cliente con reserva; tipo string
-        clientEmail: Email del cliente; tipo string
-        date: fecha establecida de la reserva (dd/mm/aaaa); tipo string
-        time: hora de la reserva; tipo string
-        services: lista de servicios reservados; tipo array
-            service: id del servicio reservado; tipo int
-            quantity: cantidad de instancias del servicio; tipo int
 
     
