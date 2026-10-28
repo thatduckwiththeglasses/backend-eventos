@@ -36,6 +36,7 @@ Se puede
     hay 2 
     - PORT siendo la variable que indica que puerto se utilizara para el servidor 
     - NODE_ENV que define el tipo de entrono al ejecutar el servidor 
+    - MONGO_URI contraseña para acceder a la base de datos en MongoDB (Obligatorio)
     
     Existe un archivo de ejemplo
 
