@@ -13,6 +13,7 @@
     "mongodb": "^7.7.0",
     "mongoose": "^9.11.3",
     "mongoose-paginate-v2": "^1.9.5",
-    "socket": "^1.9.1"
+    "socket": "^1.1.66",
+    "zod": "^4.6.7"
   }
 }
