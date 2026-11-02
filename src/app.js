@@ -10,6 +10,7 @@ import http from 'http';
 //import viewsRouter from './routes/views.router.js';
 import routerEvents from "./routes/events.routes.js";
 //import routerBookings from "./routes/bookings.routes.js";
+import routerHealth from "./routes/health.routes.js";
 import { eventsService } from "./dependencies/index.js";
 
 
@@ -37,13 +38,7 @@ app.get("/",(req, res) => {
     });
 });
 
-app.get("/api/health",(req, res) => {
-    res.status(200).json({
-        status: "success",
-        message: "El Servidor esta activo",
-        version: "0.0.1",
-    });
-});
+app.get("/api/health",routerHealth);
 
 //Los routers pueden estar aca
 

@@ -1,6 +1,7 @@
 {
   "name": "backend-eventos",
   "version": "1.0.0",
+  "type": "module",
   "description": "Simple sistema de eventos",
   "main": "index.js",
   "scripts": {
