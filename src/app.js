@@ -28,7 +28,7 @@ app.set('view engine', 'handlebars');
  //routers
  //app.use('/', viewsRouter);
  app.use("/api/events",routerEvents);
- app.use("/api/users",routerSessions);
+ app.use("/api/sessions",routerSessions);
 
 app.get("/",(req, res) => {
     res.status(200).json({
