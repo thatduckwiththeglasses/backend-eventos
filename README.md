@@ -10,7 +10,7 @@ Se puede
 
 # Instrucciones:
 
-# 1.Como instalar (en Visual Studio Code):
+## 1.Como instalar (en Visual Studio Code):
     se deben instalar las sig. dependencias
         -   1. dotenv:
                 'npm install dotenv'
@@ -30,11 +30,11 @@ Se puede
                 'npm install bcrypt'
 
 
-# 2.Como ejecutar (en VSC):
+## 2.Como ejecutar (en VSC):
     por ahora se debe ejecutar con el sig. comando
         'npm run dev'
 
-# 3 Variables de entorno:
+## 3 Variables de entorno:
     hay 2 
     - PORT siendo la variable que indica que puerto se utilizara para el servidor 
     - NODE_ENV que define el tipo de entrono al ejecutar el servidor 
@@ -42,8 +42,9 @@ Se puede
     
     Existe un archivo de ejemplo
 
-# 4 Descripcion de recursos:
-#    1.Events:
+# Descripcion de recursos:
+
+##    1.Events:
         id: valor irrepetible para identificar los eventos; tipo int
         title: titulo del evento; tipo string
         description: descripcion del evento; tipo string
@@ -53,11 +54,15 @@ Se puede
         reserved: reservas acumuladas del evento; tipo int; no es requerido para crear servicios
         available: disponibilidad del evento; tipo boolean
 
-#   2.Users:
+##  2.Users:
         first_name: Nombre del usuario; tipo string
         last_name: Apellido del usuario; tipo string
         email: direccion de correo del usuario; tipo string
         password: contraseña que utilizara el usuario para acceder; tipo string
+
+# Prueba de Usuario
+
+![Muestra de un usuario ya registrado en la base de datos con su contraseña hasheada](/backend-eventos/example/userexample.png)
 
 
     

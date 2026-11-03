@@ -1,6 +1,5 @@
 import { createHash, isValidPassword } from "../utils/passwordUtils.js";
 
-
 export class UserService {
 
     constructor (repository){
