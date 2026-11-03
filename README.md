@@ -53,5 +53,11 @@ Se puede
         reserved: reservas acumuladas del evento; tipo int; no es requerido para crear servicios
         available: disponibilidad del evento; tipo boolean
 
+#   2.Users:
+        first_name: Nombre del usuario; tipo string
+        last_name: Apellido del usuario; tipo string
+        email: direccion de correo del usuario; tipo string
+        password: contraseña que utilizara el usuario para acceder; tipo string
+
 
     

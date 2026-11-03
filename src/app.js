@@ -9,7 +9,7 @@ import http from 'http';
 //import { logger } from "./middlewares/logger.middleware.js";
 //import viewsRouter from './routes/views.router.js';
 import routerEvents from "./routes/events.routes.js";
-//import routerBookings from "./routes/bookings.routes.js";
+import routerSessions from "./routes/sessions.routes.js";
 import routerHealth from "./routes/health.routes.js";
 import { eventsService } from "./dependencies/index.js";
 
@@ -28,7 +28,7 @@ app.set('view engine', 'handlebars');
  //routers
  //app.use('/', viewsRouter);
  app.use("/api/events",routerEvents);
- //app.use("/api/bookings",routerBookings);
+ app.use("/api/users",routerSessions);
 
 app.get("/",(req, res) => {
     res.status(200).json({
