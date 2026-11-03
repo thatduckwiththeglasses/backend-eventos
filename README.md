@@ -62,7 +62,7 @@ Se puede
 
 # Prueba de Usuario
 
-![Muestra de un usuario ya registrado en la base de datos con su contraseña hasheada](/backend-eventos/example/userexample.png)
+![Muestra de un usuario ya registrado en la base de datos con su contraseña hasheada](./example/userexample.png)
 
 
     
