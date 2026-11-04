@@ -28,6 +28,8 @@ Se puede
                 'npm isntall mongoose-paginate-v2'
         -   8.Bcrypt:
                 'npm install bcrypt'
+        -   9.JWT:
+                'npm install jsonwebtoken'
 
 
 ## 2.Como ejecutar (en VSC):
