@@ -41,6 +41,8 @@ Se puede
     - PORT siendo la variable que indica que puerto se utilizara para el servidor 
     - NODE_ENV que define el tipo de entrono al ejecutar el servidor 
     - MONGO_URI contraseña para acceder a la base de datos en MongoDB (Obligatorio)
+    - JWT_SECRET firma secreta para generacion de tokens de usuario
+    - JWT_EXPIRES_IN tiempo que tarda en expirar el token creado
     
     Existe un archivo de ejemplo
 
