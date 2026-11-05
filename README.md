@@ -30,6 +30,8 @@ Se puede
                 'npm install bcrypt'
         -   9.JWT:
                 'npm install jsonwebtoken'
+        -   10.Cookie Parser:
+                'npm install cookie-parser'
 
 
 ## 2.Como ejecutar (en VSC):

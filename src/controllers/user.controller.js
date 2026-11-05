@@ -71,6 +71,13 @@ export const login = async (req, res) => {
     
       const token = generateToken(tokenUser);
 
+      res.cookie('currentUser', token, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000,
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production'
+      })
+
       return res.status(200).json({
             status: 'success',
             message: 'Login correcto'
@@ -79,5 +86,23 @@ export const login = async (req, res) => {
       return sendError(res,error,'Error al ingresar a la cuenta')
     }
 
+};
+
+export const getCurrentUser = (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    payload: req.user
+  })
+};
+
+export const logout = (req, res) => {
+  res.clearCookie('currentUser')
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Logout correcto'
+  })
 }
+
+
 

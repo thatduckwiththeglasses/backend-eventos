@@ -5,6 +5,7 @@ import { engine } from 'express-handlebars';
 
 import http from 'http';
 //import { Server } from 'socket.io';
+import cookieParser from 'cookie-parser';
 
 //import { logger } from "./middlewares/logger.middleware.js";
 //import viewsRouter from './routes/views.router.js';
@@ -20,6 +21,7 @@ import { eventsService } from "./dependencies/index.js";
 
  app.use(express.json());
  //app.use(logger);
+ app.use(cookieParser());
 
  app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
