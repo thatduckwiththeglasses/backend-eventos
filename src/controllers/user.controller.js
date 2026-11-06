@@ -1,14 +1,5 @@
 import { userService } from "../dependencies/index.js"
-
-function sendError(res, error, fallbackMessage) {
-    const statusCode = error.statusCode ?? 500;
-
-    if (statusCode === 500) console.log(error)
-        return res.status(statusCode).json({
-            status: "ERROR",
-            message: statusCode === 500 ? fallbackMessage : error.message,
-        })
-};
+import { sendError } from "../utils/responseMessages.js";
 
 export const register = async (req, res) => {
   try {
@@ -26,7 +17,7 @@ export const register = async (req, res) => {
       }
     })
   } catch (error) {
-    return sendError(res,error,'Error interno del servidor')
+    return sendError(res,error,error.message)
   }
 }
 
