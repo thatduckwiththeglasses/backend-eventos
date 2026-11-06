@@ -1,4 +1,5 @@
 import { createHash, isValidPassword } from "../utils/passwordUtils.js";
+import { CustomError } from "../utils/customError.js";
 
 export class UserService {
 
@@ -16,16 +17,12 @@ export class UserService {
 
     async register(data){
         const { first_name, last_name, email, password } = data;
-
-        if (!first_name || !last_name || !email || !password) {
-              return sendError(400,'Todos los campos son obligatorios')
-            }
         
             const normalizedEmail = email.toLowerCase().trim()
         
             const userExists = await this.getUserByEmail(normalizedEmail);
         
-            if (userExists) throw new Error('Ya existe un usuario registrado con ese email')
+            if (userExists) throw new CustomError(409,"Ya existe un usuario registrado con ese email")
         
             const hashedPass = await createHash(password);
         
@@ -37,6 +34,6 @@ export class UserService {
               role: 'user'
             });
 
-        return this.repository.register(newUser);
+        return newUser;
     }
 }

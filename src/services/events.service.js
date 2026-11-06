@@ -1,3 +1,5 @@
+import { CustomError } from "../utils/customError.js";
+
 export class EventsService {
     constructor(repository){
         this.repository = repository;
@@ -14,7 +16,7 @@ export class EventsService {
 
     async getEventById(id) {
         const event = await this.repository.getById(id);
-        if (!event) throw new Error("Evento no encontrado");
+        if (!event) throw new CustomError(404,"Evento no encontrado");
         
         return event;
     }
