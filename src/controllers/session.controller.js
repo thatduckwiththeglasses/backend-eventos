@@ -1,14 +1,50 @@
+import { CurrentUserDTO } from "../dto/currentUser.dto.js";
+import { generateToken } from "../utils/jwt.js";
 
-function sendError(res, error, fallbackMessage) {
-    const statusCode = error.statusCode ?? 500;
-
-    if (statusCode === 500) console.log(error)
-        return res.status(statusCode).json({
-            status: "ERROR",
-            message: statusCode === 500 ? fallbackMessage : error.message,
-        })
+export const registerResponse = async (req,res) => {
+    const newUser = req.user;
+    res.status(201).json({
+      status: 'success',
+      message: 'Usuario registrado correctamente',
+      payload: {
+        id: newUser._id,
+        first_name: newUser.first_name,
+        last_name: newUser.last_name,
+        email: newUser.email,
+        role: newUser.role
+      }
+    });
 };
 
-export const register = async (req,res) => {
-    res.status(201).json({});
+export const loginResponse = (req, res) => {
+  const tokenUser = {
+    id: req.user._id,
+    email: req.user.email,
+    role: req.user.role
+  }
+
+  const token = generateToken(tokenUser)
+
+  res.cookie('currentUser', token, {
+    httpOnly: true,
+    maxAge: 60 * 60 * 1000,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production'
+  })
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Login correcto'
+  })
+};
+
+export const getCurrentUser = (req, res) => {
+  
+    const currentUser = new CurrentUserDTO(req.user);
+
+    res.status(200).json({
+    status: 'success',
+    payload: currentUser
+  })
 }
+

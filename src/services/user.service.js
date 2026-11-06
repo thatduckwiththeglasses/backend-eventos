@@ -39,4 +39,8 @@ export class UserService {
 
         return this.repository.register(newUser);
     }
+
+    async getUserById(id){
+        return this.repository.getUserById(id);
+    }
 }

@@ -1,8 +1,10 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+import { Strategy as JwtStrategy } from 'passport-jwt';
 import { userService } from '../dependencies/index.js';
 import { UserModel } from '../data/models/user.model.js';
-import { createHash, isValidPassword } from '../utils/hash.js';
+import { createHash, isValidPassword } from '../utils/passwordUtils.js';
+import { cookieExtractor } from '../utils/jwt.js';
 
 passport.use(
   'register',
@@ -23,7 +25,7 @@ passport.use(
 
         const normalizedEmail = email.toLowerCase().trim()
 
-        const userExists = await userService.getUserByEmail({ email: normalizedEmail })
+        const userExists = await userService.getUserByEmail(normalizedEmail)
 
         if (userExists) {
           return done(null, false, {
@@ -60,7 +62,7 @@ passport.use(
  try {
         const normalizedEmail = email.toLowerCase().trim()
 
-        const user = await userService.getUserByEmail({ email: normalizedEmail })
+        const user = await userService.getUserByEmail(normalizedEmail)
 
                
    if (!user) {
@@ -90,5 +92,28 @@ passport.use(
   )
 );
 
+passport.use(
+  'current',
+  new JwtStrategy(
+    {
+      jwtFromRequest: cookieExtractor,
+      secretOrKey: process.env.JWT_SECRET
+    },
+    async (jwtPayload, done) => {
+      try {
+        const user = await userService.getUserById(jwtPayload.id)
 
+        if (!user) {
+          return done(null, false, {
+            message: 'Usuario no encontrado'
+          })
+        }
+
+        return done(null, user)
+      } catch (error) {
+        return done(error)
+      }
+    }
+  )
+);
 
