@@ -70,8 +70,9 @@ Se puede
         email: direccion de correo del usuario; tipo string
         password: contraseña que utilizara el usuario para acceder; tipo string
 
-# Prueba de Usuario
+# Prueba de Usuarios
 
+![Muestra de un usuario ya registrado cuya respuesta no muestra su contraseña](./example/userexamplenopass.png)
 ![Muestra de un usuario ya registrado en la base de datos con su contraseña hasheada](./example/userexample.png)
 
 
