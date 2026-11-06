@@ -1,4 +1,5 @@
 import { createHash, isValidPassword } from "../utils/passwordUtils.js";
+import { CustomError } from "../utils/customError.js";
 
 export class UserService {
 
@@ -21,7 +22,7 @@ export class UserService {
         
             const userExists = await this.getUserByEmail(normalizedEmail);
         
-            if (userExists) throw new Error("Ya existe un usuario registrado con ese email")
+            if (userExists) throw new CustomError(409,"Ya existe un usuario registrado con ese email")
         
             const hashedPass = await createHash(password);
         
