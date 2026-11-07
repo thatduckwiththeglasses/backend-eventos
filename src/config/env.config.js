@@ -7,7 +7,9 @@ const config = {
     nodeEnv: process.env.NODE_ENV,
     appName: process.env.APP_NAME || 'Sistema Backend de Turnos y Reservas',
     appEnv: process.env.APP_ENV || 'development',
-    mongoUri: process.env.MONGO_URI
+    mongoUri: process.env.MONGO_URI,
+    jwtsecretkey: process.env.JWT_SECRET,
+    jwtexptime: process.env.JWT_EXPIRES_IN
 }
 
 if(!process.env.PORT){

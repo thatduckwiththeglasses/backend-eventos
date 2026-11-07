@@ -67,8 +67,8 @@ passport.use(
                
    if (!user) {
           return done(null, false, {
-            message: 'Credenciales inválidas'
-          })
+            message: "Credenciales inválidas"
+          });
         }
 
         const validPassword = await isValidPassword(
@@ -79,8 +79,8 @@ passport.use(
                
    if (!validPassword) {
           return done(null, false, {
-            message: 'Credenciales inválidas'
-          })
+            message: "Credenciales inválidas"
+          });
         }
 
         return done(null, user)
@@ -97,7 +97,7 @@ passport.use(
   new JwtStrategy(
     {
       jwtFromRequest: cookieExtractor,
-      secretOrKey: process.env.JWT_SECRET
+      secretOrKey: process.env.JWT_SECRET,
     },
     async (jwtPayload, done) => {
       try {
@@ -105,7 +105,7 @@ passport.use(
 
         if (!user) {
           return done(null, false, {
-            message: 'Usuario no encontrado'
+            message: "Usuario no encontrado"
           })
         }
 

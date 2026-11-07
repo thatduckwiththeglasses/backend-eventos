@@ -2,6 +2,7 @@
 
 import express from "express";
 import { engine } from 'express-handlebars';
+import './config/env.config.js';
 
 import http from 'http';
 //import { Server } from 'socket.io';

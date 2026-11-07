@@ -38,6 +38,6 @@ export class UserService {
     }
 
     async getUserById(id){
-        return this.repository.getUserById(id);
+        return this.repository.getById(id);
     }
 }
