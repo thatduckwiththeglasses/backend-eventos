@@ -6,7 +6,7 @@ import { loginResponse, registerResponse, getCurrentUser } from "../controllers/
 
 const routerSessions = Router()
 
-routerSessions.post('/register',passport.authenticate('register', {
+routerSessions.post('/register',passportCallback('register', {
     session: false
 },), registerResponse);
 routerSessions.post('/login',passportCallback('login'),loginResponse);

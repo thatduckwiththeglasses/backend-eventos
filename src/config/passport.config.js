@@ -2,7 +2,6 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as JwtStrategy } from 'passport-jwt';
 import { userService } from '../dependencies/index.js';
-import { UserModel } from '../data/models/user.model.js';
 import { createHash, isValidPassword } from '../utils/passwordUtils.js';
 import { cookieExtractor } from '../utils/jwt.js';
 
@@ -35,7 +34,7 @@ passport.use(
 
         const hashedPassword = await createHash(password)
 
-        const newUser = await UserModel.create({
+        const newUser = await userService.register({
           first_name,
           last_name,
           email: normalizedEmail,
