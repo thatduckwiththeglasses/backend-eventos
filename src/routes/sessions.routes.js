@@ -1,8 +1,9 @@
 import { Router } from "express"
 import { register, login, logout } from "../controllers/user.controller.js"
 import { passportCallback } from "../middlewares/callbacks.middleware.js";
-import passport, { authorize } from 'passport';
+import passport from 'passport';
 import { loginResponse, registerResponse, getCurrentUser, getAllUsers } from "../controllers/session.controller.js";
+import { authorizeRoles } from "../middlewares/auth.middleware.js";
 
 const routerSessions = Router()
 

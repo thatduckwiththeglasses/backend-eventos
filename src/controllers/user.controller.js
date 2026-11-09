@@ -1,5 +1,7 @@
 import { userService } from "../dependencies/index.js"
 import { sendError } from "../utils/responseMessages.js";
+import { isValidPassword } from "../utils/passwordUtils.js";
+import { generateToken } from "../utils/jwt.js";
 
 export const register = async (req, res) => {
   try {

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createEvent, editEvent, getAllEvents, getEvent, removeEvent } from "../controllers/events.controller.js";
-import { validate, authorizeRoles, authorizeEventOwnerOrAdmin } from "../middlewares/validation.middleware.js";
+import { validate } from "../middlewares/validation.middleware.js";
+import { authorizeRoles, authorizeEventOwnerOrAdmin } from "../middlewares/auth.middleware.js";
 import { passportCallback } from "../middlewares/callbacks.middleware.js";
 import { createEventSchema, updateEventSchema} from "../validations/events.validation.js";
 
