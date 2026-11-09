@@ -70,6 +70,7 @@ Se puede
 
 ![Muestra de un usuario ya registrado cuya respuesta no muestra su contraseña](./example/userexamplenopass.png)
 ![Muestra de un usuario ya registrado en la base de datos con su contraseña hasheada](./example/userexample.png)
-
+![Muestra de una cookie de un usuario ya logeado](./example/usercookieexample.png)
+![Muestra de un caso de error donde se intenta acceder a una sesion abierta sin una cookie correspondiente](./example/nocookieexample.png)
 
     

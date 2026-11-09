@@ -1,5 +1,7 @@
 import { userService } from "../dependencies/index.js"
 import { sendError } from "../utils/responseMessages.js";
+import { isValidPassword } from "../utils/passwordUtils.js";
+import { generateToken } from "../utils/jwt.js";
 
 export const register = async (req, res) => {
   try {
@@ -69,7 +71,8 @@ export const login = async (req, res) => {
 
       return res.status(200).json({
             status: 'success',
-            message: 'Login correcto'
+            message: 'Login correcto',
+            payload: res.cookie.currentUser
       })
     } catch(error){
       return sendError(res,error,'Error al ingresar a la cuenta')
