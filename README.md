@@ -4,7 +4,7 @@
 Simple sistema de reserva de diversos eventos
 
 Se puede
-    crear un evento, ver los eventos, actualizar un evento y eliminar un evento, crear un usuario, reservar un evento, actualizar un usuario y eliminar un usuario
+    crear un evento, ver los eventos, actualizar un evento y eliminar un evento, crear un usuario, reservar un evento, consultar sesión del usuario y cerrar sesión
 
 
 
