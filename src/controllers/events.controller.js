@@ -4,8 +4,60 @@ import { sendError } from "../utils/responseMessages.js";
 
 export const getAllEvents = async (req, res)  => {
     try{
+        const {
+          category,
+          status,
+          location,
+          fromDate,
+          toDate,
+          search,
+          page = 1,
+          limit = 10,
+          sort = 'date'
+        } = req.query
+        const filter = {}
+        if (category) {
+          filter.category = category
+        }
+        if (status) {
+          filter.status = status
+        }
+        if (location) {
+          filter.location = {
+            $regex: location,
+            $options: 'i'
+          }
+        }
+        if (fromDate || toDate) {
+          filter.date = {}
+          if (fromDate) {
+            filter.date.$gte = new Date(fromDate)
+          }
+          if (toDate) {
+            filter.date.$lte = new Date(toDate)
+          }
+        }
+        if (search) {
+          filter.$or = [
+            {
+              title: {
+                $regex: search,
+                $options: 'i'
+              }
+            },
+            {
+              description: {
+                $regex: search,
+                $options: 'i'
+              }
+            }
+          ]
+        }
+        filter.pageNumber = Number(page)
+        filter.limitNumber = Math.min(Number(limit) || 10, 50)
+        filter.skip = (filter.pageNumber - 1) * filter.limitNumber
 
-        const events = await eventsService.getEvents(req.query);
+        const events = await eventsService.getEventsByFilter(filter);
 
         return res.status(200).json({
                 status: "sucess",

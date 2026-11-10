@@ -14,6 +14,10 @@ export class EventsService {
         return events;
     }
 
+    async getEventsByFilter(filter){
+        return await this.repository.getData(filter)
+    }
+
     async getEventById(id) {
         const event = await this.repository.getById(id);
         if (!event) throw new CustomError(404,"Evento no encontrado");
@@ -22,17 +26,16 @@ export class EventsService {
     }
 
     async createEvent(data) {
-        const { name, description, duration, price, category, capacity, available } = data;
+        const { title, description, category, date, location, capacity, price } = data;
 
-        if(!name || !description || !duration || !price || !category || available === undefined) throw new Error("Faltan campos obligatorios")
-        if (typeof duration !== "number") throw new Error("Duration debe ser un numero")
-         else {
-            if (duration <= 0) throw new Error("Duration debe ser mayor que 0")
-            }
+        const eventDate = new Date(date)
+        const now = new Date()
 
-        if (typeof available !== "boolean") throw new Error("Available debe ser un booleano");
+        if (eventDate <= now) throw new CustomError(400,'La fecha del evento debe ser futura')
+        
+        if (capacity < 0) throw new CustomError(400,'La capacidad debe ser mayor a cero')
 
-        return this.repository.create({ name, description, duration, price, category, capacity, available })
+        return this.repository.create({ title, description, category, date, location, capacity, price })
     }
 
     async editEvent(id,data) {

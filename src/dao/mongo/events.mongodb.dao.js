@@ -8,6 +8,16 @@ export class EventsMongoDao {
         },{ limit, page, lean: true });
     };
 
+    async getAllFiltered(filter){
+        return EventModel
+            .find(filter)
+            .populate('category')
+            .populate('organizer', 'first_name last_name email')
+            .sort(filter.sort)
+            .skip(filter.skip)
+            .limit(filter.limitNumber)
+    }
+
     async getById(id){
         return EventModel.findById(id);
     }

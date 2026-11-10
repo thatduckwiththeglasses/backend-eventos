@@ -8,6 +8,10 @@ export class EventsRepository {
         return this.dao.getAll(category, maxPrice, limit, page);
     };
 
+    getData(filter) {
+        return this.dao.getAllFiltered(filter);
+    };
+
     getById(id) {
         return this.dao.getById(id);
     };

@@ -2,50 +2,56 @@ import mongoose from 'mongoose';
 import paginate from 'mongoose-paginate-v2';
 
 const eventSchema = new mongoose.Schema(
- {
- name: {
- type: String,
- required: true
- },
- description: {
- type: String,
- required: true
- },
- duration: {
- type: Number,
- required: true
- },
- price: {
- type: Number,
- required: true
- },
- category: {
- type: String,
- required: true,
- lowercase: true,
- enum: ["deportes","musica","programacion","games","juegos","varios","test"]
- },
- capacity:{
-    type: Number,
-    required: true,
-    min:1
- },
- reserved:{
-    type: Number,
-    default:0,
-    min:0
- },
- available: {
- type: Boolean,
- default: true
- }
- },
- {
- timestamps: true,
- versionKey: false
- }
- );
- 
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+      required: true
+    },
+    date: {
+      type: Date,
+      required: true
+    },
+    location: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    capacity: {
+      type: Number,
+      required: true,
+      min: 1
+    },
+    price: {
+      type: Number,
+      default: 0,
+      min: 0
+    },
+    status: {
+      type: String,
+      enum: ['draft', 'published', 'cancelled', 'finished'],
+      default: 'draft'
+    },
+    organizer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
+  },
+  {
+    timestamps: true
+  }
+)
 
 eventSchema.index({ name: 1 }, { unique: true });
 eventSchema.index({ description: "text" });
