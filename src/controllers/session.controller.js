@@ -25,11 +25,13 @@ export const loginResponse = (req, res) => {
 
   const token = generateToken(tokenUser)
 
+  const isProduction = process.env.NODE_ENV === 'production'
+
   res.cookie('currentUser', token, {
     httpOnly: true,
     maxAge: 60 * 60 * 1000,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production'
+    sameSite: isProduction ? 'strict' : 'lax',
+    secure: isProduction
   })
 
   res.status(200).json({
