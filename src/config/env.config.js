@@ -9,7 +9,7 @@ const config = {
     appEnv: process.env.APP_ENV || 'development',
     mongoUri: process.env.MONGO_URI,
     jwtSecret: process.env.JWT_SECRET,
-    jwtExpiration: process.env.JWT_EXPIRES_IN || 1
+    jwtExpiration: process.env.JWT_EXPIRES_IN
 }
 
 if(!process.env.PORT){
@@ -25,7 +25,7 @@ if (!config.mongoUri) {
  throw new Error('Falta configurar MONGO_URI en las variables de entorno');
 }
 
-if (!config.jwtSecret){
+if (!process.env.JWT_SECRET){
     throw new Error('Falta definir una key o clave para generar tokens');
 }
 
