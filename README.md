@@ -32,6 +32,10 @@ Se puede
                 'npm install jsonwebtoken'
         -   10.Cookie Parser:
                 'npm install cookie-parser'
+        -   11.Passport:
+                'npm install passport'
+                'npm install passport-local'
+                'npm install passport-jwt'
 
 
 ## 2.Como ejecutar (en VSC):

@@ -1,14 +1,15 @@
-import { Router } from "express"
-import { register, login, getCurrentUser, logout } from "../controllers/user.controller.js"
-import { createUserSchema } from "../validations/users.validation.js";
-import { validate } from "../middlewares/validation.middleware.js";
-import { authToken } from "../middlewares/auth.middleware.js";
+import { Router } from "express";
+import { passportCallback } from "../middlewares/callbacks.middleware.js";
+import passport from 'passport';
+import { loginResponse, registerResponse, getCurrentUser, logout } from "../controllers/session.controller.js";
 
 const routerSessions = Router()
 
-routerSessions.post('/register',validate(createUserSchema), register);
-routerSessions.post('/login',login);
-routerSessions.get('/current',authToken, getCurrentUser);
+routerSessions.post('/register',passportCallback('register', {
+    session: false
+},), registerResponse);
+routerSessions.post('/login',passportCallback('login'),loginResponse);
+routerSessions.get('/current',passportCallback('current'), getCurrentUser);
 routerSessions.post('/logout',logout);
 
 export default routerSessions;
