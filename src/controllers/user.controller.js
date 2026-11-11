@@ -72,7 +72,7 @@ export const login = async (req, res) => {
       return res.status(200).json({
             status: 'success',
             message: 'Login correcto',
-            payload: res.cookie.currentUser
+            payload: token
       })
     } catch(error){
       return sendError(res,error,'Error al ingresar a la cuenta')

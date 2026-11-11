@@ -7,7 +7,9 @@ const config = {
     nodeEnv: process.env.NODE_ENV,
     appName: process.env.APP_NAME || 'Sistema Backend de Turnos y Reservas',
     appEnv: process.env.APP_ENV || 'development',
-    mongoUri: process.env.MONGO_URI
+    mongoUri: process.env.MONGO_URI,
+    jwtSecret: process.env.JWT_SECRET,
+    jwtExpiration: process.env.JWT_EXPIRES_IN || 1
 }
 
 if(!process.env.PORT){
@@ -21,6 +23,10 @@ if(!process.env.NODE_ENV){
 
 if (!config.mongoUri) {
  throw new Error('Falta configurar MONGO_URI en las variables de entorno');
+}
+
+if (!config.jwtSecret){
+    throw new Error('Falta definir una key o clave para generar tokens');
 }
 
 export default config;

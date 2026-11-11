@@ -19,13 +19,13 @@ Se puede
         -   3.express:
                 'npm install express'
         -   4.mongoose:
-                'npm isntall mongoose'
+                'npm install mongoose'
         -   5.express-handlebars:
-                'npm isntall express-handlebars'
+                'npm install express-handlebars'
         -   6.socket.io:
-                'npm isntall socket'
+                'npm install socket'
         -   7.mongoose-paginate-v2:
-                'npm isntall mongoose-paginate-v2'
+                'npm install mongoose-paginate-v2'
         -   8.Bcrypt:
                 'npm install bcrypt'
         -   9.JWT:
