@@ -61,23 +61,20 @@ passport.use(
  try {
         const normalizedEmail = email.toLowerCase().trim()
 
-        const user = await userService.getUserByEmail(normalizedEmail)
+        const user = await userService.getUserByEmail(normalizedEmail);
 
-               console.log(user);
-   if (!user) {
+        if (!user) {
           return done(null, false, {
             message: "Credenciales inválidas"
           });
-        }
+        };
 
-        console.log('| ',password,' | ',user.password)
         const validPassword = await isValidPassword(
           password,
           user.password
         )
-
-               
-   if (!validPassword) {
+        
+        if (!validPassword) {
           return done(null, false, {
             message: "Credenciales inválidas"
           });

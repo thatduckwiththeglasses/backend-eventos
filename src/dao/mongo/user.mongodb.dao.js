@@ -7,7 +7,7 @@ export class UserMongoDao {
     }
     
     async getByEmail(email){
-        return UserModel.findOne({ email: email });
+        return UserModel.findOne({ email: email }).select('+password').lean();
     }
 
     async create(data){

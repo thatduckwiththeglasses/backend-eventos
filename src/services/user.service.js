@@ -24,13 +24,11 @@ export class UserService {
         
             if (userExists) throw new CustomError(409,"Ya existe un usuario registrado con ese email")
         
-            const hashedPass = await createHash(password);
-        
             const newUser = await this.repository.register({
               first_name,
               last_name,
               email: normalizedEmail,
-              password: hashedPass,
+              password: password,
               role: 'user'
             });
 
