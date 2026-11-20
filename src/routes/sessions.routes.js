@@ -5,9 +5,7 @@ import { loginResponse, registerResponse, getCurrentUser, logout } from "../cont
 
 const routerSessions = Router()
 
-routerSessions.post('/register',passportCallback('register', {
-    session: false
-},), registerResponse);
+routerSessions.post('/register',passportCallback('register',), registerResponse);
 routerSessions.post('/login',passportCallback('login'),loginResponse);
 routerSessions.get('/current',passportCallback('current'), getCurrentUser);
 routerSessions.post('/logout',logout);

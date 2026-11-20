@@ -37,7 +37,10 @@ export const loginResponse = (req, res) => {
   res.status(200).json({
     status: 'success',
     message: 'Login correcto',
-    payload: token
+    payload: {
+      email: tokenUser.email,
+      role: tokenUser.role
+    }
   })
 };
 

@@ -6,11 +6,7 @@ export const authToken = (req,res,next) => {
     try{
         const token = req.cookies.currentUser
 
-<<<<<<< HEAD
         if (!token) throw new CustomError(401,"El token no es autentico")
-=======
-        if (!token) throw new CustomError("El token no es autentico")
->>>>>>> entrega4
         
         const decoded = verifyToken(token);
 
