@@ -20,19 +20,15 @@ Se puede
                 'npm install express'
         -   4.mongoose:
                 'npm install mongoose'
-        -   5.express-handlebars:
-                'npm install express-handlebars'
-        -   6.socket.io:
-                'npm install socket'
-        -   7.mongoose-paginate-v2:
+        -   5.mongoose-paginate-v2:
                 'npm install mongoose-paginate-v2'
-        -   8.Bcrypt:
+        -   6.Bcrypt:
                 'npm install bcrypt'
-        -   9.JWT:
+        -   7.JWT:
                 'npm install jsonwebtoken'
-        -   10.Cookie Parser:
+        -   8.Cookie Parser:
                 'npm install cookie-parser'
-        -   11.Passport:
+        -   9.Passport:
                 'npm install passport'
                 'npm install passport-local'
                 'npm install passport-jwt'
@@ -43,7 +39,7 @@ Se puede
         'npm run dev'
 
 ## 3 Variables de entorno:
-    hay 2 
+    hay 5 
     - PORT siendo la variable que indica que puerto se utilizara para el servidor 
     - NODE_ENV que define el tipo de entrono al ejecutar el servidor 
     - MONGO_URI contraseña para acceder a la base de datos en MongoDB (Obligatorio)
