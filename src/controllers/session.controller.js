@@ -1,5 +1,14 @@
+import { userService } from "../dependencies/index.js";
 import { CurrentUserDTO } from "../dto/currentUser.dto.js";
 import { generateToken } from "../utils/jwt.js";
+
+export const getAllUsers = async (req,res) => {
+  const users = await userService.getAllUsers();
+  return res.status(201).json({
+      status: 'success',
+      payload: users
+    });
+}
 
 export const registerResponse = async (req,res) => {
     const newUser = req.user;
